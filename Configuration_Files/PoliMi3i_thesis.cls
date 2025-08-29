@@ -117,7 +117,7 @@
 			\\
 			{{\color{bluepoli} \singlespacing \huge \bfseries \thesistitle \par}}	
 			\vspace{1.5cm}
-			{\color{bluepoli} \bfseries \large{\textsc{Tesi di Laurea Magistrale in\\ \course}}\par}
+			{\color{bluepoli} \bfseries \large{\textsc{Theoretical Project of\\ \course}}\par}
 			\vspace{1.5 cm}
 			{\color{black} \Large {Author:} \bfseries{\name}}
 			\end{minipage}
@@ -129,8 +129,6 @@
 			Student ID: {\ID}
 			\\
 			Advisor: {\advisor}
-			\\
-			Co-advisors: {\coadvisor}
 			\\
 			Academic Year: {\academicyear}
 			}

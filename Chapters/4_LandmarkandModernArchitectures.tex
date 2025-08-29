@@ -1,0 +1,69 @@
+\chapter{Landmark and Modern Architectures}
+
+Since the introduction of the first Convolutional Neural Networks, several \textbf{landmark architectures} have shaped the evolution of deep learning. Each new generation addressed the limitations of its predecessors, enabling networks to become deeper, more efficient, and more accurate on large-scale datasets such as ImageNet.
+\\
+In this chapter, we analyze five key architectures that defined the development of CNNs: \textbf{LeNet-5}, \textbf{AlexNet}, \textbf{VGGNet}, \textbf{ResNet}, and \textbf{EfficientNet}.
+
+\section{LeNet-5 (1998)}
+
+Developed by Yann LeCun and colleagues, LeNet-5 \cite{lecun1998gradient} was one of the first CNN architectures designed for handwritten digit recognition. It achieved excellent results on the MNIST dataset, reaching nearly perfect accuracy, and was even deployed in banking systems for automated check reading.
+\\
+LeNet-5 introduced several concepts that remain foundational in modern CNNs, such as convolutional layers, pooling operations, and feature maps.
+\\
+The architecture processed $32 \times 32$ grayscale images through two convolutional layers, each followed by average pooling, and concluded with two fully connected layers for classification. Although modest in scale compared to modern networks, LeNet laid the groundwork for all subsequent developments.
+
+\section{AlexNet (2012)}
+
+The real breakthrough came in 2012 when Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton introduced AlexNet \cite{krizhevsky2012imagenet}. Trained on the ImageNet dataset, AlexNet reduced the top-5 error rate from 26\% to 15\%, outperforming all competing models by a significant margin and marking the beginning of the deep learning revolution.
+\\
+AlexNet’s success stemmed from several innovations. It popularized the use of the ReLU activation function, which accelerated convergence compared to sigmoid and tanh. It also introduced dropout regularization to combat overfitting and leveraged GPU acceleration to train a large model efficiently. Furthermore, data augmentation techniques such as image translations and flips were used to artificially expand the training set, further improving generalization.
+
+\section{VGGNet (2014)}
+
+Two years later, Karen Simonyan and Andrew Zisserman proposed VGGNet \cite{simonyan2014very}, which became renowned for its simplicity and depth. Unlike AlexNet, VGGNet adopted a uniform architecture, stacking multiple $3 \times 3$ convolutional filters sequentially. This design enabled the network to reach depths of 16 or 19 layers (VGG16 and VGG19, respectively), significantly improving performance on ImageNet.
+\\
+However, this gain in accuracy came at a cost: VGGNet required an enormous number of parameters (approximately 138 million for VGG16) making it computationally expensive and memory intensive. Despite this drawback, VGGNet remains a popular feature extractor in transfer learning due to its well-structured representation of visual patterns.
+
+\section{ResNet (2015)}
+
+As networks grew deeper, researchers encountered the vanishing gradient problem, where gradients became too small to effectively update early layers during training. To address this issue, Kaiming He and colleagues introduced ResNet \cite{he2015deep}, a groundbreaking architecture that implemented residual connections.
+\\
+These skip connections allow layers to learn residual mappings rather than direct transformations. Mathematically, a residual block learns:
+\begin{align}
+    y = F(x) + x
+\end{align}
+
+This innovation enabled the successful training of extremely deep models, such as ResNet-152, without performance degradation. ResNet achieved state-of-the-art results on ImageNet, winning the ILSVRC 2015 competition and inspiring a new family of architectures based on residual learning.
+
+\section{EfficientNet (2019)}
+
+In 2019, Mingxing Tan and Quoc V. Le introduced EfficientNet \cite{tan2019efficientnet}, which proposed a compound scaling method to balance three dimensions of a CNN simultaneously: depth, width, and input resolution. Previous models typically scaled these dimensions independently, leading to suboptimal designs. EfficientNet’s compound scaling achieved a better trade-off between accuracy and efficiency.
+\\
+EfficientNet models achieved state-of-the-art performance on ImageNet with significantly fewer parameters and FLOPs compared to previous architectures. For instance, EfficientNet-B7 reached a top-1 accuracy of nearly 97\% while using fewer computational resources than much larger models.
+
+\section{Comparative Overview}
+
+The following table summarizes the key characteristics of these landmark architectures:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccccl}
+\hline
+\textbf{Architecture} & \textbf{Year} & \textbf{Depth} & \textbf{Params} & \textbf{Dataset} & \textbf{Top-1 Acc.} & \textbf{Key Innovation} \\
+\hline
+LeNet-5 & 1998 & 7  & $\sim$60K  & MNIST    & $\sim$99\%  & First CNN, pooling layers \\
+AlexNet & 2012 & 8  & 61M        & ImageNet & 84.7\%      & ReLU, dropout, GPU training \\
+VGG16   & 2014 &16  & 138M       & ImageNet & $\sim$90\%  & Small $3\times3$ kernels, deep uniform design \\
+ResNet50 & 2015 &50 & 25.6M      & ImageNet & $\sim$96\%  & Residual connections \\
+EfficientNet-B7 & 2019 &66 & 66M & ImageNet & $\sim$97\%  & Compound scaling \\
+\hline
+\end{tabular}
+\caption{Comparison of landmark CNN architectures.}
+\label{tab:cnn_comparison}
+\end{table}
+
+The evolution of CNNs reflects a constant balance between accuracy, efficiency, and scalability.
+LeNet-5 laid the foundations by introducing convolution and pooling.
+AlexNet triggered the deep learning revolution through GPU training and ReLU activations.
+VGGNet demonstrated the effectiveness of deeper yet simpler architectures, while ResNet solved the training challenges of very deep models using residual connections.
+Finally, EfficientNet redefined model scaling strategies, achieving state-of-the-art performance with fewer computational resources \cite{li2021survey}.

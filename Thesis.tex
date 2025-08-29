@@ -1,11 +1,3 @@
-% A LaTeX template for MSc Thesis submissions to 
-% Politecnico di Milano (PoliMi) - School of Industrial and Information Engineering
-%
-% S. Bonetti, A. Gruttadauria, G. Mescolini, A. Zingaro
-% e-mail: template-tesi-ingind@polimi.it
-%
-% Last Revision: October 2021
-%
 % Copyright 2021 Politecnico di Milano, Italy. NC-BY
 
 \documentclass{Configuration_Files/PoliMi3i_thesis}
@@ -121,47 +113,14 @@
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
 
 \puttitle{
-	title=Title, % Title of the thesis
-	name=Name Surname, % Author Name and Surname
-	course=Xxxxxxx Engineering - Ingegneria Xxxxxxx, % Study Programme (in Italian)
-	ID  = 000000,  % Student ID number (numero di matricola)
-	advisor= Prof. Name Surname, % Supervisor name
-	coadvisor={Name Surname, Name Surname}, % Co-Supervisor name, remove this line if there is none
-	academicyear={20XX-XX},  % Academic Year
+	title={Convolutional Neural Networks: Theory, Architectures and Applications}, % Title of the thesis
+	name=Giorgio Monaco, % Author Name and Surname
+	course=Numerical Analysis for Machine Learning, % 
+	ID  = 277930,  % Student ID number (numero di matricola)
+	advisor= Prof. Edie Miglio, % Supervisor name
+	coadvisor=, % Co-Supervisor name, remove this line if there is none
+	academicyear={2024-25},  % Academic Year
 } % These info will be put into your Title page 
-
-%----------------------------------------------------------------------------
-%	PREAMBLE PAGES: ABSTRACT (inglese e italiano), EXECUTIVE SUMMARY
-%----------------------------------------------------------------------------
-\startpreamble
-\setcounter{page}{1} % Set page counter to 1
-
-% ABSTRACT IN ENGLISH
-\chapter*{Abstract} 
-Here goes the Abstract in English of your thesis followed by a list of keywords.
-The Abstract is a concise summary of the content of the thesis (single page of text)
-and a guide to the most important contributions included in your thesis.
-The Abstract is the very last thing you write.
-It should be a self-contained text and should be clear to someone who hasn't (yet) read the whole manuscript.
-The Abstract should contain the answers to the main scientific questions that have been addressed in your thesis.
-It needs to summarize the adopted motivations and the adopted methodological approach as well as the findings of your work and their relevance and impact.
-The Abstract is the part appearing in the record of your thesis inside POLITesi,
-the Digital Archive of PhD and Master Theses (Laurea Magistrale) of Politecnico di Milano.
-The Abstract will be followed by a list of four to six keywords.
-Keywords are a tool to help indexers and search engines to find relevant documents.
-To be relevant and effective, keywords must be chosen carefully.
-They should represent the content of your work and be specific to your field or sub-field.
-Keywords may be a single word or two to four words. 
-\\
-\\
-\textbf{Keywords:} here, the keywords, of your thesis % Keywords
-
-% ABSTRACT IN ITALIAN
-\chapter*{Abstract in lingua italiana}
-Qui va l'Abstract in lingua italiana della tesi seguito dalla lista di parole chiave.
-\\
-\\
-\textbf{Parole chiave:} qui, vanno, le parole chiave, della tesi % Keywords (italian)
 
 %----------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES/SYMBOLS
@@ -194,46 +153,23 @@ Qui va l'Abstract in lingua italiana della tesi seguito dalla lista di parole ch
 % --------------------------------------------------------------------------
 % NUMBERED CHAPTERS % Regular chapters following
 % --------------------------------------------------------------------------
-\chapter*{Introduction}
 
-This document is intended to be both an example of the Polimi \LaTeX{} template for Master Theses,
-as well as a short introduction to its use. It is not intended to be a general introduction to \LaTeX{} itself,
-and the reader is assumed to be familiar with the basics of creating and compiling \LaTeX{} documents (see \cite{oetiker1995not, kottwitz2015latex}). 
-\\
-The cover page of the thesis must contain all the relevant information:
-title of the thesis, name of the Study Programme and School, name of the author,
-student ID number, name of the supervisor, name(s) of the co-supervisor(s) (if any), academic year.
-The above information are provided by filling all the entries in the command \verb|\puttitle{}|
-in the title page section of this template.
-\\
-Be sure to select a title that is meaningful.
-It should contain important keywords to be identified by indexer.
-Keep the title as concise as possible and comprehensible even to people who are not experts in your field.
-The title has to be chosen at the end of your work so that it accurately captures the main subject of the manuscript. 
-\\
-Since a thesis might be a substantial document, it is convenient to break it into chapters.
-You can create a new chapter as done in this template by simply using the following command
-\begin{verbatim}
-\chapter{Title of the chapter}
-\end{verbatim}
-followed by the body text.
-\\
-Especially for long manuscripts, it is recommended to give each chapter its own file.
-In this case, you write your chapter in a separated \verb|chapter_n.tex| file
-and then include it in the main file with the following command
-\begin{verbatim}
-\input{chapter_n.tex}
-\end{verbatim}
-It is recommended to give a label to each chapter by using the command
-\begin{verbatim}
-\label{ch:chapter_name}%
-\end{verbatim}
-where the argument is just a text string that you'll use to reference that part
-as follows: \textit{Chapter~\ref{ch:chapter_one} contains \sc{an introduction to}  \dots}.\\
-If necessary, an unnumbered chapter can be created by
-\begin{verbatim}
-\chapter*{Title of the unnumbered chapter}
-\end{verbatim}
+\input{Chapters/0_Introduction}
+
+\input{Chapters/1_TheoreticalandMathematicalFoundations}
+
+\input{Chapters/2_BasicCNNArchitecture}
+
+\input{Chapters/3_TrainingConvolutionalNeuralNetworks}
+
+\input{Chapters/4_LandmarkandModernArchitectures}
+
+\input{Chapters/5_PracticalApplicationsofCNNs}
+
+\input{Chapters/6_CurrentChallengesandFutureDirections}
+
+\input{Chapters/7_Conclusion}
+
 
 \chapter{Chapter one}
 \label{ch:chapter_one}%
@@ -484,14 +420,9 @@ The list of references is placed at the end of the manuscript after the chapter 
 We suggest to use the BibTeX package and save the bibliographic references  in the file \verb|Thesis_bibliography.bib|.
 This is indeed a database containing all the information about the references. To cite in your manuscript, use the \verb|\cite{}| command as follows:
 \\
-\textit{Here is how you cite bibliography entries: \cite{knuth74}, or multiple ones at once: \cite{knuth92,lamport94}}.
+\textit{Here is how you cite bibliography entries: , or multiple ones at once:.}
 \\
-The bibliography and list of references are generated automatically by running BibTeX \cite{bibtex}.
-
-\chapter{Conclusions and future developments}
-\label{ch:conclusions}%
-A final chapter containing the main conclusions of your research/study
-and possible future developments of your work have to be inserted in this chapter.
+The bibliography and list of references are generated automatically by running BibTeX.
 
 %-------------------------------------------------------------------------
 %	BIBLIOGRAPHY
@@ -506,38 +437,11 @@ and possible future developments of your work have to be inserted in this chapte
 
 \cleardoublepage
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-\appendix
-\chapter{Appendix A}
-If you need to include an appendix to support the research in your thesis, you can place it at the end of the manuscript.
-An appendix contains supplementary material (figures, tables, data, codes, mathematical proofs, surveys, \dots)
-which supplement the main results contained in the previous chapters.
-
-\chapter{Appendix B}
-It may be necessary to include another appendix to better organize the presentation of supplementary material.
-
 
 % LIST OF FIGURES
 \listoffigures
 
 % LIST OF TABLES
 \listoftables
-
-% LIST OF SYMBOLS
-% Write out the List of Symbols in this page
-\chapter*{List of Symbols} % You have to include a chapter for your list of symbols (
-\begin{table}[H]
-    \centering
-    \begin{tabular}{lll}
-        \textbf{Variable} & \textbf{Description} & \textbf{SI unit} \\\hline\\[-9px]
-        $\bm{u}$ & solid displacement & m \\[2px]
-        $\bm{u}_f$ & fluid displacement & m \\[2px]
-    \end{tabular}
-\end{table}
-
-% ACKNOWLEDGEMENTS
-\chapter*{Acknowledgements}
-Here you might want to acknowledge someone.
-
-\cleardoublepage
 
 \end{document}

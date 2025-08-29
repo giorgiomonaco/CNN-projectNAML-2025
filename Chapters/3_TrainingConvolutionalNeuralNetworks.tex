@@ -1,0 +1,81 @@
+\chapter{Training Convolutional Neural Networks}
+
+Training a Convolutional Neural Network (CNN) involves teaching the network to extract meaningful features from input data and map them to the desired outputs.
+This process relies on two fundamental steps: the forward pass, where predictions are computed, and the backpropagation, where errors are propagated backward to update the network’s parameters \cite{goodfellow2016deep}.
+\\
+In this chapter, we explain how CNNs learn through:
+
+* The forward propagation of information.
+* The calculation of loss functions.
+* The optimization of parameters using gradient-based methods.
+* Techniques to avoid overfitting and improve generalization.
+
+\section{Forward Pass}
+
+During the forward pass, the input data flows sequentially through the network’s layers:
+\\
+1. Convolutional layers apply filters to extract hierarchical features.
+2. Activation functions introduce non-linearity, enabling the network to model complex relationships.
+3. Pooling layers reduce spatial dimensions while retaining critical information.
+4. Fully connected layers integrate the learned features to make predictions.
+5. The output layer produces final values, whether they are probabilities for classification tasks or continuous values for regression.
+\\
+For example, in an image classification task on ImageNet, the forward pass transforms an input image into a 1,000-dimensional probability vector, where each dimension corresponds to a possible class.
+
+\section{Backpropagation and Weight Updates}
+
+After the forward pass, the CNN evaluates how far its predictions are from the expected output using a loss function.
+The network then uses backpropagation to update its weights and minimize this error \cite{goodfellow2016deep}.
+\\
+The process involves:
+\\
+1. Computing the gradient of the loss with respect to each parameter using the chain rule.
+2. Propagating the error backward from the output layer through the network.
+3. Updating weights based on these gradients using an optimization algorithm.
+\\
+Backpropagation is crucial in CNNs, as it allows the network to learn which filters are useful for recognizing specific patterns.
+Through many iterations, the kernels gradually specialize in detecting relevant features at different levels of abstraction.
+
+\section{Loss Functions}
+
+Loss functions measure the discrepancy between the predicted outputs and the ground truth labels.
+The choice of loss function depends on the task:
+\\
+\textbf{Cross-Entropy Loss}, commonly used for classification tasks:
+
+\begin{align}
+    \mathcal{L} = - \sum_{i=1}^C y_i \cdot \log(\hat{y}_i)
+\end{align}
+
+where:
+
+\begin{itemize}
+    \item $C$ is the number of classes,
+    \item $y_i$ is the true label (one-hot encoded),
+    \item $\hat{y}_i$ is the predicted probability for class $i$.
+\end{itemize}
+
+\textbf{Mean Squared Error (MSE)}, used for regression tasks:
+
+\begin{align}
+    \mathcal{L} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat{y}_i)^2
+\end{align}
+
+where $N$ is the number of samples.
+\\
+Choosing the right loss function is essential for guiding the network to learn meaningful representations \cite{goodfellow2016deep}.
+
+\section{Optimization Algorithms}
+
+To minimize the loss, CNNs rely on gradient-based optimization methods.
+Some of the most widely used include:
+\begin{itemize}
+    \item \textbf{Stochastic Gradient Descent (SGD)}:
+        Updates weights based on small batches of data, it's simple but effective, especially with momentum to accelerate convergence.
+    \item \textbf{Adam} (Adaptive Moment Estimation):
+        Combines the benefits of SGD with momentum and adaptive learning rates. Popular in modern architectures due to fast convergence and robustness.
+    \item \textbf{RMSProp}:
+        Maintains an adaptive learning rate for each parameter, it's useful for tasks with non-stationary objectives, such as recurrent models.
+\end{itemize}
+
+According to Li et al. \cite{li2021survey}, Adam and SGD with momentum remain the most widely adopted optimizers in CNNs due to their balance between efficiency and stability.

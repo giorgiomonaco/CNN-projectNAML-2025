@@ -1,0 +1,72 @@
+\chapter{Practical Applications of CNNs}
+
+Convolutional Neural Networks (CNNs) have become the standard for a wide range of tasks in artificial intelligence, especially in the field of computer vision. 
+Their ability to automatically extract hierarchical features from raw data has enabled breakthroughs across domains such as image recognition, object detection, medical imaging, and autonomous systems \cite{li2021survey, zhao2024review}.
+\\
+In this section, we explore the most relevant applications of CNNs, highlighting how the architectures presented in Section~\ref{tab:cnn_comparison} have been successfully deployed in real-world scenarios.
+
+\section{Image Classification}
+
+One of the earliest and most impactful applications of CNNs has been \textbf{image classification}, where the goal is to assign a label to an entire image. 
+Starting from LeNet-5's success on MNIST to AlexNet's breakthrough on the ImageNet dataset, CNNs have consistently pushed the boundaries of classification performance.
+\\
+Modern architectures such as VGG, ResNet, and EfficientNet achieve top-1 accuracies above 90\% on ImageNet, making CNNs the backbone of most commercial image recognition systems \cite{li2021survey}. 
+These capabilities power numerous services, from automatic photo tagging on social media platforms to visual search engines and large-scale multimedia retrieval systems.
+
+\section{Object Detection and Localization}
+
+While classification focuses on identifying what is present in an image, \textbf{object detection} extends the task to also determining \textit{where} objects are located.
+CNN-based models such as R-CNN, Faster R-CNN, YOLO, and SSD leverage feature maps to predict bounding boxes and class labels simultaneously. 
+\\
+Thanks to these advances, CNNs are now widely used in applications such as:
+
+\begin{itemize}
+    \item \textbf{Autonomous driving}: detecting pedestrians, vehicles, and traffic signs in real time.
+    \item \textbf{Security systems}: monitoring surveillance footage for abnormal activities.
+    \item \textbf{Retail analytics}: recognizing products and tracking customer behavior.
+\end{itemize}
+
+According to Zhao et al. \cite{zhao2024review}, the integration of CNNs with attention mechanisms has further improved detection accuracy, especially in challenging environments.
+
+\section{Semantic and Instance Segmentation}
+
+Another critical application of CNNs is \textbf{image segmentation}, which involves partitioning an image into regions corresponding to different objects or classes.
+Two main approaches are commonly distinguished:
+
+\begin{itemize}
+    \item \textbf{Semantic segmentation}: assigns a class label to every pixel, grouping identical objects under the same label.
+    \item \textbf{Instance segmentation}: goes a step further by differentiating between individual objects of the same class.
+\end{itemize}
+
+Architectures such as U-Net, Mask R-CNN, and DeepLab have become standard tools in this field \cite{zhao2024review}. 
+Applications range from autonomous navigation to industrial quality control and satellite image analysis.
+
+\section{Medical Imaging}
+
+Medical image analysis has benefited enormously from the adoption of CNNs, which are now routinely used in:
+
+\begin{itemize}
+    \item Detecting tumors and lesions in MRI and CT scans.
+    \item Classifying skin diseases based on dermoscopic images.
+    \item Automating radiological workflows by assisting with diagnosis.
+\end{itemize}
+
+According to Li et al. \cite{li2021survey}, CNN-based systems in medical imaging have achieved human-level accuracy in several diagnostic tasks. 
+These advances accelerate clinical decision-making and reduce the workload of healthcare professionals.
+
+\section{Autonomous Driving and Robotics}
+
+Self-driving cars and autonomous robots rely heavily on CNNs to interpret their surroundings. 
+Through a combination of image classification, object detection, and segmentation, CNNs enable real-time understanding of complex environments \cite{zhao2024review}. 
+\\
+For instance, Tesla’s Autopilot and Waymo’s self-driving systems integrate CNNs to detect pedestrians, vehicles, and obstacles, as well as to understand lane markings and traffic lights.
+
+\section{Beyond Computer Vision}
+
+Although CNNs were originally developed for visual tasks, they have been successfully applied beyond computer vision:
+
+\begin{itemize}
+    \item \textbf{Natural Language Processing}: character-level CNNs for text classification and sentiment analysis.
+    \item \textbf{Audio Processing}: spectrogram-based CNNs for speech recognition and music genre classification.
+    \item \textbf{Multimodal Models}: combining CNNs with Transformers for tasks that integrate vision and language, such as image captioning.
+\end{itemize}

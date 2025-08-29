@@ -1,0 +1,110 @@
+\chapter{Theoretical and Mathematical Foundations}
+\label{ch:th_math_foundations}%
+
+Understanding the theoretical foundations of Convolutional Neural Networks (CNNs) requires revisiting the basic concepts of artificial neurons, fully connected layers, and the convolution operation itself.
+
+
+\section{Artificial Neuron and Fully-Connected Layers}
+\label{sec:an_fc_layers_recap}%
+
+An artificial neuron receives inputs \(x_1, x_2,...,x_n\), multiplies them by learnable weights \(w_1, w_2,...,w_n\), sums them together, adds a bias term \(b\), and applies a non-linear activation function \(\sigma(\cdot)\):
+
+\begin{align}
+    z = \sum_{i=1}^{n} w_ix_i + b \label{eq:ann_1} \\
+    y = \sigma(x) \label{eq:ann_2}
+\end{align}
+
+In a fully connected layer (or dense layer), every neuron in a given layer is connected to all neurons in the previous layer. While this structure is powerful, it does not scale well to high-dimensional inputs such as images.
+\\
+For example, a single RGB image of size \(224 \times 224\) has: \(224\times224\approx150.000\) input features.
+\\
+A fully connected network would require millions of parameters, making it inefficient and prone to overfitting: CNNs overcome this limitation through the convolution operation.
+
+\section{The Convolution Operation}
+\label{sec:convolution_op}%
+
+\subsection{Mathematical Definition}
+\label{subsec:math_definition}
+
+A convolution is a mathematical operation that combines two functions to produce a third function expressing how one shape modifies the other.
+
+\begin{itemize}
+    \item Continuous convolution (1D):
+
+    \begin{align}
+    (f*g)(t)=\int_{-\infty}^{+\infty}f(\tau)g(t-\tau)d\tau
+    \end{align}
+
+    \item Discrete convolution (1D):
+
+    \begin{align}
+    (f*g)[n]=\sum_{m=-\infty}^{+\infty}f[m]g[n-m]
+    \end{align}
+    
+\end{itemize}
+
+In CNNs, we usually work with discrete 2D convolutions for image data. For an image \(I\) and a kernel (or filter) 
+\(K\), the convolution at location (\(i,j\)) is:
+
+\begin{align}
+    S(i,j) = (I*K)(i,j)=\sum_m\sum_nI(i+m,j+n)\cdot K(m,n)
+\end{align}
+
+
+\subsection{1D vs 2D Convolutions}
+
+\begin{itemize}
+    \item 1D convolutions are often used in time-series analysis or signal processing.
+    Example: detecting patterns in ECG signals or sound waves.
+
+    \item 2D convolutions are used in image processing, where filters (kernels) slide across height and width to extract spatial features.
+\end{itemize}
+
+\subsection{Numerical Example}
+Consider a small \(3\times3\) grayscale image \(I\) and a \(2\times2\) kernel \(K\):
+
+\begin{align}
+    I = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}, K = \begin{bmatrix} 1 &  0 \\ 0 & -1 \end{bmatrix}
+\end{align}
+
+The convolution at the top-left position is:
+
+\begin{align}
+    S(0,0)=1\cdot1+2\cdot0+4\cdot0+5\cdot(-1)=1-5=-4
+\end{align}
+
+By sliding the kernel across the image, we obtain the feature map \(S\).
+\\
+This process highlights patterns such as edges or textures depending on the kernel values.
+
+
+\subsection{Convolution vs Cross-Correlation}
+
+In mathematics, convolution flips the kernel before applying it. However, in practice, most deep learning frameworks (e.g., TensorFlow, PyTorch) implement cross-correlation, defined as:
+
+\begin{align}
+    S(i,j)=\sum_m\sum_n I(i+m,j+n)\cdot K(m,n)
+\end{align}
+
+The difference is subtle but important:
+\begin{itemize}
+    \item Convolution: kernel is reversed.
+    \item Cross-correlation: kernel is used as-is.
+\end{itemize}
+
+In CNNs, we learn the kernel weights, so the flip does not affect the final result.
+
+\section{Data Representation in CNNs}
+
+CNNs operate directly on tensors, which are multi-dimensional arrays of data.
+
+\subsection{Kernels, Feature Maps, and Receptive Fields}
+A kernel (or filter) is a small learnable matrix, that extracts specific features such as edges, textures, or shapes. The feature map is the result of convolving an image with a kernel, highlighting regions where the feature is present. The receptive field refers to the region of the input image that influences a particular neuron in the feature map.
+\\
+As we go deeper into the network, neurons have larger receptive fields and capture higher-level features, from simple edges in the first layers to complex shapes and objects in deeper layers.
+\\
+For example, imagine sliding a \(3\times3\) kernel across a \(5\times5\) image:
+\\
+At each step, the kernel multiplies corresponding pixel values and sums them up. The resulting feature map shows where patterns detected by the kernel occur in the image.
+\\
+Multiple kernels can be stacked in a single convolutional layer to extract different types of features simultaneously.
