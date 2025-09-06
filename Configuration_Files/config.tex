@@ -35,7 +35,7 @@
 
 % Title format: chapter
 \titleformat{\chapter}[hang]{
-\fontsize{50}{20}\selectfont\bfseries\filright}{\textcolor{bluepoli} \thechapter\hsp\hspace{2mm}\textcolor{bluepoli}{|   }\hsp}{0pt}{\huge\bfseries \textcolor{bluepoli}
+\fontsize{30}{20}\selectfont\bfseries\filright}{\textcolor{bluepoli} \thechapter\hsp\hspace{2mm}\textcolor{bluepoli}{|   }\hsp}{0pt}{\huge\bfseries \textcolor{bluepoli}
 }
 
 % Title format: section
@@ -58,14 +58,34 @@
 
 \makeatletter
 % Renewcommand: cleardoublepage including the background pic
-\renewcommand*\cleardoublepage{%
-  \clearpage\if@twoside\ifodd\c@page\else
-  \null
-  \AddToShipoutPicture*{\BackgroundPic}
-  \thispagestyle{empty}%
-  \newpage
-  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%\renewcommand*\cleardoublepage{%
+%  \clearpage\if@twoside\ifodd\c@page\else
+%  \null
+%  \AddToShipoutPicture*{\BackgroundPic}
+%  \thispagestyle{empty}%
+%  \newpage
+%  \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
 
 %For correctly numbering algorithms
 \numberwithin{algorithm}{chapter}
+
+\usepackage{etoolbox}
+\makeatletter
+% Se nel wrapper della classe c'è un \vspace{-1cm}, sostituiscilo:
+\patchcmd{\polimichapter}{\vspace{-1cm}}{\vspace{0pt}}{}{}
+\patchcmd{\polimichapterstar}{\vspace{-1cm}}{\vspace{0pt}}{}{}
+\makeatother
+
+\usepackage{titlesec}
+% \titlespacing*{\chapter}{<rientro>}{<spazio PRIMA>}{<spazio DOPO>}
+\titlespacing*{\chapter}{0pt}{10pt}{8pt} % es.: niente spazio sopra, 20pt sotto
+
+% --- Niente salto pagina all'inizio capitolo, ma mantiene numerazione/TOC ---
+\usepackage{etoolbox}
+\makeatletter
+% rimuove il clearpage/cleardoublepage dentro \chapter (stile 'book')
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+% se la classe ha salvato il \chapter in \latexchapter e lo richiama via wrapper, patchiamo anche quello (se esiste)
+\patchcmd{\latexchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother

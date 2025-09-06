@@ -15,7 +15,7 @@
 %	HANDLING THE STYLE OF THE THESIS
 %--------------------------------------------------------------------------
 \LoadClass[12pt, twoside]{book} % 12 pt font, two-sided book style
-\RequirePackage[a4paper, includehead, headheight=0.6cm, inner=3.0cm ,outer=2.0cm, top=2.5cm, bottom=2.5cm]{geometry}
+\RequirePackage[a4paper, includehead, headheight=0.6cm, inner=2.5cm ,outer=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 
 \RequirePackage[bf, font=onehalfspacing]{caption} % caption: FIG in bold, 1.5 line spacing in figure and table captions
 \newcommand{\thesisspacing}{\onehalfspacing}
@@ -26,7 +26,7 @@
 \renewcommand{\chapter}{\@ifstar{\polimichapterstar}{\polimichapter}}
 
 \newcommand{\polimichapter}[1]{
-    \cleardoublepage % To make sure the previous headers are passed
+    %\cleardoublepage % To make sure the previous headers are passed
     \phantomsection % To help hyperref link to the right page
     \latexchapter{#1}
     \renewcommand{\headrulewidth}{0pt} %removing the horizontal line in the header
@@ -37,7 +37,7 @@
 }
 
 \newcommand{\polimichapterstar}[1]{
-    \cleardoublepage % To make sure the previous headers are passed
+    %\cleardoublepage % To make sure the previous headers are passed
     \phantomsection % To help hyperref link to the right page
     \latexchapter*{#1} 
    \renewcommand{\headrulewidth}{0pt} %removing the horizontal line in the header
@@ -115,7 +115,7 @@
             \\
 			\vspace{2.5cm}
 			\\
-			{{\color{bluepoli} \singlespacing \huge \bfseries \thesistitle \par}}	
+			{{\color{bluepoli} \singlespacing \fontsize{23pt}{28pt}\selectfont \bfseries \thesistitle \par}}	
 			\vspace{1.5cm}
 			{\color{bluepoli} \bfseries \large{\textsc{Theoretical Project of\\ \course}}\par}
 			\vspace{1.5 cm}
@@ -135,6 +135,7 @@
 			\end{minipage}
 	\end{titlepage}
 }
+
 
 \newcommand\blankpage{%
     \null

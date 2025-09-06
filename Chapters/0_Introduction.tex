@@ -1,11 +1,16 @@
 \chapter*{Introduction}
 
-Deep learning has transformed the way machines perceive and interpret data, with Convolutional Neural Networks (CNNs) emerging as one of the most powerful and widely adopted architectures, particularly in computer vision. Unlike traditional fully connected networks, which struggle with high-dimensional inputs such as images, CNNs exploit spatial hierarchies in data to efficiently extract relevant features, making them the backbone of most modern visual recognition systems.
-\\
-The origins of CNNs trace back to the 1990s, when Yann LeCun and colleagues introduced \textit{LeNet-5}, a pioneering architecture for handwritten digit recognition \cite{lecun1998gradient}. Although LeNet demonstrated the potential of convolutional layers, limited computational resources at the time restricted its widespread adoption. The true breakthrough arrived in 2012 with \textit{AlexNet} \cite{krizhevsky2012imagenet}, which leveraged GPU acceleration, ReLU activations, and dropout regularization to win the ImageNet Large Scale Visual Recognition Challenge, reducing the top-5 error rate from 26\% to 15\% and igniting the modern deep learning era.
-\\
-Since then, CNNs have evolved rapidly. \textit{VGGNet} \cite{simonyan2014very} showcased the benefits of deep architectures with uniform $3 \times 3$ convolutions, while \textit{ResNet} \cite{he2015deep} introduced residual connections to enable the training of extremely deep networks. More recently, \textit{EfficientNet} \cite{tan2019efficientnet} optimized model scaling strategies, achieving state-of-the-art performance with fewer computational resources.
-\\
-Today, CNNs underpin a wide range of applications, from image classification and object detection to medical imaging, natural language processing, and autonomous robotics. Despite their success, CNNs still face challenges such as high computational costs, limited interpretability, and vulnerability to adversarial inputs \cite{li2021survey}. Nevertheless, their impact on artificial intelligence remains transformative, and their role is expected to endure even as hybrid approaches with emerging architectures, such as Transformers, gain traction.
-\\
-This paper provides an introduction to CNNs by exploring their mathematical foundations, architectural components, training procedures, landmark models, and real-world applications. By the end, readers should gain a comprehensive understanding of how CNNs work, why they are effective, and where the field is heading.
+Deep learning has revolutionized modern machine learning by enabling neural networks to automatically extract useful representations from raw data.  
+Among the architectures that made this progress possible, \textit{Convolutional Neural Networks} (CNNs) stand out as one of the most influential.  
+Originally developed for computer vision, CNNs have also achieved remarkable success in speech recognition, time-series forecasting and natural language processing.  
+
+Unlike traditional fully connected networks, CNNs are designed to exploit the \textit{spatial and structural properties of data}.  
+They achieve this by using the mathematical operation of convolution, which processes information locally and hierarchically.  
+This principle reflects the idea that nearby elements of the input (such as adjacent pixels in an image) are highly correlated and should be analyzed together.  
+As a result, CNNs learn models that are more efficient, require fewer parameters and generalize better than dense architectures.  
+
+Conceptually, CNNs bring together mathematical insights from signal processing and biological inspiration from neuroscience.  
+The notion of local receptive fields in the human visual cortex, described in the pioneering experiments of Hubel and Wiesel, 1968 \cite{hubel1968}, directly influenced the design of convolutional layers.   
+
+In this work, we address the mathematical definition of convolution and the motivation for its use in neural networks, analyze the role of pooling and its modern alternatives and discuss several important variants of the convolution operator.  
+We then review applications of convolution across different types of data, from one-dimensional signals to video and volumetric analysis and examine the neuroscientific principles that inspired CNNs.

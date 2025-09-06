@@ -1,0 +1,59 @@
+\chapter{What is Convolution}
+\label{ch:what-is-conv}%
+
+In its most general form, \textbf{convolution} is an operation on two functions $f$ and $g$ that produces a third function $f*g$, graphically expressing how the \textit{shape} of one function is modified by the other. The term \textit{convolution} refers to both the resulting function and to the process of computing it. In the context of deep learning, convolution is the fundamental building block of Convolutional Neural Networks (CNNs), allowing them to efficiently extract and combine local features from structured data such as images, audio signals or sequences.
+
+\clearpage
+
+\section{One-dimensional convolution}
+
+The convolution of $f$ and $g$ is written $f*g$, typically denoting the operator with the symbol $*$. It is defined as the integral of the product of the two functions after one is reflected about the y-axis and shifted (is commutative, so both of them could be shifted):
+
+\begin{equation}
+s(t)=(f * g)(t) = \int f(\tau)g(t-\tau)d\tau
+\end{equation}
+
+The first argument (in this example, the function $f$) to the convolution is often referred to as the \textbf{input}, and the second argument (in this case $g$) as the \textbf{kernel}.
+
+When we work on computer data, time will be usually discretized. Formally, the discrete convolution of two functions $f$ and $g$ is defined as:
+
+\begin{equation}
+s(t)=(f * g)(t) = \sum_{\tau=-\infty}^{+\infty} f(\tau) \, g(t - \tau).
+\end{equation}
+
+However in practice, the sums are finite since we deal with signals of finite length.  
+
+The commutative property of convolution arises because we have \textbf{flipped} the kernel relative to the input, in the sense that as $m$ increases, the index into the input increases, but the index into the kernel decreases. The only reason to flip the kernel is to obtain the commutative property. 
+
+While the commutative property is useful for writing proofs, it is not usually an important property of a neural network implementation. In machine learning, CNNs usually employ a slightly different operation called \textit{cross-correlation}, defined as:
+
+\begin{equation}
+s(t)=(f * g)(t) = \sum_{\tau=-\infty}^{+\infty} f(\tau) \, g(t + \tau).
+\end{equation}
+
+The difference between convolution and cross-correlation is the absence of the flip in the kernel. Despite this technical distinction, the term “convolution” is commonly used in the literature to refer to both operations \cite{goodfellow2016deep}.
+
+\section{Two-dimensional convolution}
+
+For two-dimensional data such as images, convolution generalizes naturally.  
+Given an image $I : \mathbb{R}^2 \to \mathbb{R}$ and a kernel (or filter) $K : \mathbb{R}^2 \to \mathbb{R}$, the discrete convolution is defined as:
+
+\begin{equation}
+S(i,j)=(K*I)(i, j) = \sum_{m} \sum_{n} I(m, n) \, K(i - m, j - n).
+\end{equation}
+
+Analogously, the cross-correlation used in CNNs is given by:
+
+\begin{equation}
+S(i,j)=(K*I)(i, j) = \sum_{m} \sum_{n} I(i + m, j + n) \, K(m, n).
+\end{equation}
+
+In practice, $K$ is a small matrix that slides over the image, producing an output feature map.  
+Each element of the feature map is a local weighted sum of the pixels in the receptive field defined by the kernel.  
+
+\section{Convolution as matrix multiplication}
+
+Convolution can be expressed as multiplication by a matrix with a special structure.  
+In one dimension, this matrix is the \textit{Toeplitz Matrix}, meaning each row is a shifted version of the kernel. In two dimensions, the operation corresponds to a \textit{doubly block circulant matrix}, where each block is itself Toeplitz.  
+
+These matrices are highly structured, because weights are shared across positions, and sparse, since kernels are usually much smaller than the input. This perspective shows that convolution is formally a kind of matrix multiplication, although in practice deep learning frameworks use optimized implementations that exploit sparsity and weight sharing rather than explicitly building these large matrices.  

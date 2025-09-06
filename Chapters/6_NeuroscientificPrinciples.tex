@@ -1,0 +1,42 @@
+\chapter{Neuroscientific Principles for CNNs}
+
+Convolutional networks are perhaps the greatest success story of biologically inspired artificial intelligence. Though convolutional networks have been guided by many other fields, some of the key design principles of neural networks were drawn from neuroscience \cite{goodfellow2016deep}.  
+
+\section{Receptive fields in the visual cortex}
+
+Hubel and Wiesel \cite{hubel1968} conducted pioneering experiments on the visual cortex of cats and monkeys. They showed that neurons in early visual system responded selectively to specific regions of the visual field. These regions, known as \textit{receptive fields}, cover only a small portion of the visual input. Moreover, many neurons respond preferentially to simple patterns such as oriented edges or bars of light.
+
+In the perspective of deep learning, we can consider a very simplified view of brain function. According to this view, that early visual system identified is called \textbf{V1}, also known as the \textit{primary visual cortex}, located in the back of the head.
+
+This suggested a hierarchical organization: lower-level neurons detect simple visual features, while higher-level neurons combine them to represent more complex structures.  
+
+\section{Translation to convolutional models}
+
+Convolutional networks reproduce several key properties observed in the primary visual cortex. V1 is organized as a spatial map: neurons respond to specific regions of the visual field, preserving the topographic organization of the retina.  
+CNNs can capture this property by defining features on two-dimensional maps, where each unit corresponds to a localized region of the input.  
+
+Second, V1 contains many \textbf{simple cells}, whose activity can be approximated as a linear function over a small receptive field.  
+The detector units in CNNs are designed to emulate these cells, applying learned linear filters to local regions of the input.  
+
+Finally, V1 includes also \textbf{complex cells} which are insensitive to small shifts in the position of features and sometimes to changes such as lighting conditions. This biological mechanism inspires the use of pooling in CNNs.
+
+\clearpage
+
+It is generally believed that the same basic principles of V1 apply to other areas of the visual system. As far as we are concerned, the main role of these other anatomical regions is just to carry the signal to V1. When viewing an object, information ﬂows from the retina, through a brain region called the \textit{lateral geniculate nucleus } (LGN), to V1, then onward to V2, then V4, then to the last layer, the \textit{inferotemporal cortex} (IT). In our vision, as we move deeper into the brain, a basic strategy of detection followed by pooling is repeated.
+
+This alternation of detection and pooling observed across the multiple areas of the visual system (LGN, V1, V2, V4, IT) is mirrored in the layered structure of CNNs.  
+As deeper layers combine the outputs of earlier ones, the network builds progressively more abstract features, similar to how the IT encodes complex objects and shows invariance to many transformations. Empirical studies even demonstrate that CNN activations can predict firing rates in IT and achieve performance comparable to humans on rapid object recognition tasks (DiCarlo, 2013 \cite{dicarlo2013}). 
+
+\section{Limitations of the analogy}
+
+Although CNNs were inspired by the described visual system, there are many important differences. Some of these differences are well established in neuroscience, while others remain open questions, as many aspects of biological vision are not yet fully understood.  
+
+A major difference concerns the input itself. Human vision is not uniformly high resolution: most of the retina provides only coarse information, while a small central region called the \textbf{fovea} captures fine detail.  
+To perceive a full scene in high resolution, the brain integrates successive glimpses obtained through rapid eye movements known as \textbf{saccades}. Convolutional networks instead, usually process entire images at full resolution in a single pass. 
+
+Another difference is that the human visual system operates in conjunction with other senses such as hearing and is influenced by factors like mood, attention and prior knowledge. CNNs instead are purely visual systems that lack such multimodal integration. Moreover, the biological visual system does much more than object recognition. It interprets complex scenes, reasons about the relationships between objects, and processes 3-D geometric information necessary for action and navigation.  
+Convolutional networks have been applied to some of these tasks, as described in section \labelcref{sec:3D-CNNs}, but such applications are still in their infancy.  
+
+Feedback is another critical distinction: even in early cortical areas such as V1, activity is strongly shaped by top-down signals from higher visual areas. Although feedback connections have been studied in artificial neural networks, they have not yet produced consistent advantages comparable to those observed in biology. Finally, while firing rates in IT resemble the features extracted by deep convolutional layers, the intermediate computations may differ substantially. The brain probably uses more complex activation and pooling mechanisms than simple linear filters.
+
+\clearpage
