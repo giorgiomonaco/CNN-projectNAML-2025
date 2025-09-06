@@ -43,7 +43,7 @@ In a deep convolutional network, stacking multiple convolutional layers allows u
 \section{Parameter sharing}
 
 Another advantage of convolution is that the same kernel is applied across all spatial locations.  
-We can say that the network has \textit{tied weights}, because the values of the weight are the same everywhere. This means that instead of learning a separate set of weights for each location, the model learns only one kernel that is reused.  
+We can say that the network has \textit{tied weights}, because the values of the weights are the same everywhere. This means that instead of learning a separate set of weights for each location, the model learns only one kernel that is reused.  
 
 For example, a kernel that detects vertical edges will detect them anywhere in the image. This does not affect the runtime of forward propagation, still $O(k\times n)$ where $k$ is the kernel size and the input is $m\times n$.
 
